@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import { useRef } from 'react';
 import './App.css';
 
 function App() {
+  const countRef = useRef(0);
+  let count = 0;
+
+  console.log("Renderizou");
+  console.log(countRef.current, "countRef")
+  console.log(count, "count")
+
+  function incrementCountRef() {
+    countRef.current += 1;
+    console.log("Valor de countRef", countRef.current);
+  }
+
+  function incrementCount() {
+    count += 1;
+    console.log("Valor de count", count);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => incrementCountRef()}>Increment ref</button>
+      <button onClick={() => incrementCount()}>Increment let</button>
     </div>
   );
 }
