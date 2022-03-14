@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import React, { useRef} from 'react';
 import './App.css';
 
 function App() {
@@ -12,25 +12,23 @@ function App() {
   console.log(countRef.current, "countRef")
   console.log(count, "count")
 
-  useEffect(() => {
-    incrementRef.current.addEventListener('click', () => {
-      countRef.current += 1;
-      console.log("Valor de countRef", countRef.current);
-    });
-
-    incrementLet.current.addEventListener('click', () => {
-      count += 1;
-      console.log("Valor de count", count);
-    });
-
-  }, []);
-
   return (
     <div className="App">
-      <button ref={incrementRef}>
+      <button 
+        onClick={ (evt) => {
+          countRef.current += 1;
+          console.log("Valor de countRef", countRef.current);
+        }}
+        ref={incrementRef}
+      >
         Increment ref
       </button>
-      <button ref={incrementLet}>
+      <button 
+        onClick={() => {
+          count += 1;
+          console.log("Valor de count", count);
+        }}
+        ref={incrementLet}>
         Increment let
       </button>
     </div>
