@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import './App.css';
 
 function App2() {
@@ -16,13 +16,13 @@ function App2() {
     h1Ref.current.style.color = 'white';
   }
 
-  h1Ref.current.addEventListener('mouseover', () => {
+  const handleMouseOver  = () => {
     h1Ref.current.innerText = 'Mouse no strong'
-  });
+  }
 
-  h1Ref.current.addEventListener('mouseleave', () => {
+  const handleMouseLeave = () => {
     h1Ref.current.innerText = 'Mouse fora do strong'
-  });
+  }
 
   return (
     <div className="App">
